@@ -127,6 +127,7 @@ exports.Prisma.AlunoScalarFieldEnum = {
   senha: 'senha',
   plano: 'plano',
   modalidade: 'modalidade',
+  aniversario: 'aniversario',
   vencimento: 'vencimento',
   contaCriada: 'contaCriada'
 };

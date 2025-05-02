@@ -911,6 +911,7 @@ export namespace Prisma {
     senha: string | null
     plano: $Enums.Planos | null
     modalidade: $Enums.Modalidade | null
+    aniversario: Date | null
     vencimento: Date | null
     contaCriada: Date | null
   }
@@ -922,6 +923,7 @@ export namespace Prisma {
     senha: string | null
     plano: $Enums.Planos | null
     modalidade: $Enums.Modalidade | null
+    aniversario: Date | null
     vencimento: Date | null
     contaCriada: Date | null
   }
@@ -933,6 +935,7 @@ export namespace Prisma {
     senha: number
     plano: number
     modalidade: number
+    aniversario: number
     vencimento: number
     contaCriada: number
     _all: number
@@ -946,6 +949,7 @@ export namespace Prisma {
     senha?: true
     plano?: true
     modalidade?: true
+    aniversario?: true
     vencimento?: true
     contaCriada?: true
   }
@@ -957,6 +961,7 @@ export namespace Prisma {
     senha?: true
     plano?: true
     modalidade?: true
+    aniversario?: true
     vencimento?: true
     contaCriada?: true
   }
@@ -968,6 +973,7 @@ export namespace Prisma {
     senha?: true
     plano?: true
     modalidade?: true
+    aniversario?: true
     vencimento?: true
     contaCriada?: true
     _all?: true
@@ -1052,6 +1058,7 @@ export namespace Prisma {
     senha: string
     plano: $Enums.Planos | null
     modalidade: $Enums.Modalidade | null
+    aniversario: Date | null
     vencimento: Date | null
     contaCriada: Date
     _count: AlunoCountAggregateOutputType | null
@@ -1080,6 +1087,7 @@ export namespace Prisma {
     senha?: boolean
     plano?: boolean
     modalidade?: boolean
+    aniversario?: boolean
     vencimento?: boolean
     contaCriada?: boolean
   }, ExtArgs["result"]["aluno"]>
@@ -1093,11 +1101,12 @@ export namespace Prisma {
     senha?: boolean
     plano?: boolean
     modalidade?: boolean
+    aniversario?: boolean
     vencimento?: boolean
     contaCriada?: boolean
   }
 
-  export type AlunoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "email" | "senha" | "plano" | "modalidade" | "vencimento" | "contaCriada", ExtArgs["result"]["aluno"]>
+  export type AlunoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "email" | "senha" | "plano" | "modalidade" | "aniversario" | "vencimento" | "contaCriada", ExtArgs["result"]["aluno"]>
 
   export type $AlunoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Aluno"
@@ -1109,6 +1118,7 @@ export namespace Prisma {
       senha: string
       plano: $Enums.Planos | null
       modalidade: $Enums.Modalidade | null
+      aniversario: Date | null
       vencimento: Date | null
       contaCriada: Date
     }, ExtArgs["result"]["aluno"]>
@@ -1486,6 +1496,7 @@ export namespace Prisma {
     readonly senha: FieldRef<"Aluno", 'String'>
     readonly plano: FieldRef<"Aluno", 'Planos'>
     readonly modalidade: FieldRef<"Aluno", 'Modalidade'>
+    readonly aniversario: FieldRef<"Aluno", 'DateTime'>
     readonly vencimento: FieldRef<"Aluno", 'DateTime'>
     readonly contaCriada: FieldRef<"Aluno", 'DateTime'>
   }
@@ -1830,6 +1841,7 @@ export namespace Prisma {
     senha: 'senha',
     plano: 'plano',
     modalidade: 'modalidade',
+    aniversario: 'aniversario',
     vencimento: 'vencimento',
     contaCriada: 'contaCriada'
   };
@@ -1916,6 +1928,7 @@ export namespace Prisma {
     senha?: StringFilter<"Aluno"> | string
     plano?: EnumPlanosNullableFilter<"Aluno"> | $Enums.Planos | null
     modalidade?: EnumModalidadeNullableFilter<"Aluno"> | $Enums.Modalidade | null
+    aniversario?: DateTimeNullableFilter<"Aluno"> | Date | string | null
     vencimento?: DateTimeNullableFilter<"Aluno"> | Date | string | null
     contaCriada?: DateTimeFilter<"Aluno"> | Date | string
   }
@@ -1927,6 +1940,7 @@ export namespace Prisma {
     senha?: SortOrder
     plano?: SortOrderInput | SortOrder
     modalidade?: SortOrderInput | SortOrder
+    aniversario?: SortOrderInput | SortOrder
     vencimento?: SortOrderInput | SortOrder
     contaCriada?: SortOrder
     _relevance?: AlunoOrderByRelevanceInput
@@ -1942,6 +1956,7 @@ export namespace Prisma {
     senha?: StringFilter<"Aluno"> | string
     plano?: EnumPlanosNullableFilter<"Aluno"> | $Enums.Planos | null
     modalidade?: EnumModalidadeNullableFilter<"Aluno"> | $Enums.Modalidade | null
+    aniversario?: DateTimeNullableFilter<"Aluno"> | Date | string | null
     vencimento?: DateTimeNullableFilter<"Aluno"> | Date | string | null
     contaCriada?: DateTimeFilter<"Aluno"> | Date | string
   }, "id" | "email">
@@ -1953,6 +1968,7 @@ export namespace Prisma {
     senha?: SortOrder
     plano?: SortOrderInput | SortOrder
     modalidade?: SortOrderInput | SortOrder
+    aniversario?: SortOrderInput | SortOrder
     vencimento?: SortOrderInput | SortOrder
     contaCriada?: SortOrder
     _count?: AlunoCountOrderByAggregateInput
@@ -1970,6 +1986,7 @@ export namespace Prisma {
     senha?: StringWithAggregatesFilter<"Aluno"> | string
     plano?: EnumPlanosNullableWithAggregatesFilter<"Aluno"> | $Enums.Planos | null
     modalidade?: EnumModalidadeNullableWithAggregatesFilter<"Aluno"> | $Enums.Modalidade | null
+    aniversario?: DateTimeNullableWithAggregatesFilter<"Aluno"> | Date | string | null
     vencimento?: DateTimeNullableWithAggregatesFilter<"Aluno"> | Date | string | null
     contaCriada?: DateTimeWithAggregatesFilter<"Aluno"> | Date | string
   }
@@ -1981,6 +1998,7 @@ export namespace Prisma {
     senha: string
     plano?: $Enums.Planos | null
     modalidade?: $Enums.Modalidade | null
+    aniversario?: Date | string | null
     vencimento?: Date | string | null
     contaCriada: Date | string
   }
@@ -1992,6 +2010,7 @@ export namespace Prisma {
     senha: string
     plano?: $Enums.Planos | null
     modalidade?: $Enums.Modalidade | null
+    aniversario?: Date | string | null
     vencimento?: Date | string | null
     contaCriada: Date | string
   }
@@ -2003,6 +2022,7 @@ export namespace Prisma {
     senha?: StringFieldUpdateOperationsInput | string
     plano?: NullableEnumPlanosFieldUpdateOperationsInput | $Enums.Planos | null
     modalidade?: NullableEnumModalidadeFieldUpdateOperationsInput | $Enums.Modalidade | null
+    aniversario?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     vencimento?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     contaCriada?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2014,6 +2034,7 @@ export namespace Prisma {
     senha?: StringFieldUpdateOperationsInput | string
     plano?: NullableEnumPlanosFieldUpdateOperationsInput | $Enums.Planos | null
     modalidade?: NullableEnumModalidadeFieldUpdateOperationsInput | $Enums.Modalidade | null
+    aniversario?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     vencimento?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     contaCriada?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2025,6 +2046,7 @@ export namespace Prisma {
     senha: string
     plano?: $Enums.Planos | null
     modalidade?: $Enums.Modalidade | null
+    aniversario?: Date | string | null
     vencimento?: Date | string | null
     contaCriada: Date | string
   }
@@ -2036,6 +2058,7 @@ export namespace Prisma {
     senha?: StringFieldUpdateOperationsInput | string
     plano?: NullableEnumPlanosFieldUpdateOperationsInput | $Enums.Planos | null
     modalidade?: NullableEnumModalidadeFieldUpdateOperationsInput | $Enums.Modalidade | null
+    aniversario?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     vencimento?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     contaCriada?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2047,6 +2070,7 @@ export namespace Prisma {
     senha?: StringFieldUpdateOperationsInput | string
     plano?: NullableEnumPlanosFieldUpdateOperationsInput | $Enums.Planos | null
     modalidade?: NullableEnumModalidadeFieldUpdateOperationsInput | $Enums.Modalidade | null
+    aniversario?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     vencimento?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     contaCriada?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2120,6 +2144,7 @@ export namespace Prisma {
     senha?: SortOrder
     plano?: SortOrder
     modalidade?: SortOrder
+    aniversario?: SortOrder
     vencimento?: SortOrder
     contaCriada?: SortOrder
   }
@@ -2131,6 +2156,7 @@ export namespace Prisma {
     senha?: SortOrder
     plano?: SortOrder
     modalidade?: SortOrder
+    aniversario?: SortOrder
     vencimento?: SortOrder
     contaCriada?: SortOrder
   }
@@ -2142,6 +2168,7 @@ export namespace Prisma {
     senha?: SortOrder
     plano?: SortOrder
     modalidade?: SortOrder
+    aniversario?: SortOrder
     vencimento?: SortOrder
     contaCriada?: SortOrder
   }

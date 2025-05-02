@@ -37,7 +37,8 @@ model Aluno {
   plano      Planos?     @default(EXPERIMENTAL)
   modalidade Modalidade? @default(MUSCULACAO)
 
-  vencimento DateTime?
+  aniversario DateTime?
+  vencimento  DateTime?
 
   contaCriada DateTime
 }
