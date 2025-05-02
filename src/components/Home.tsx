@@ -1,8 +1,44 @@
 import { Button } from "../components/ui/button";
 import { Label } from "../components/ui/label";
 import { Input } from "../components/ui/input";
+import { FormEvent, useState } from "react";
+import axios from 'axios';
 
 export const Home = () => {
+
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
+
+    const [message, setMessage] = useState<MessageProps>({
+        message: '',
+        statusCode: undefined,
+        error: ''
+    });
+
+    type MessageProps = {
+        message?: string,
+        statusCode?: number | undefined,
+        error?: string
+    }
+
+    const handleLogin = async (e: FormEvent) => {
+
+        e.preventDefault();
+
+        try {
+
+            const data = await axios.post('http://localhost:8080/login', {email, senha});
+            setMessage({ message: data.data.message, statusCode: data.status, error: ''})
+
+            console.log(message);
+                                    
+
+        } catch (err: any) {
+            setMessage({ error: err.response.data.message })
+        }
+
+    }
+
     return (
         <main className="flex w-screen h-screen items-center justify-between relative p-6">
 
@@ -44,17 +80,19 @@ export const Home = () => {
                     <div className="flex flex-col gap-3">
                         <div>
                             <Label htmlFor="email" className="font-semibold">E-mail</Label>
-                            <Input id="email" placeholder="betelgym@gmail.com" />
+                            <Input id="email" placeholder="betelgym@gmail.com" onChange={(e) => setEmail(e.target.value)}/>
                         </div>
 
                         <div>
                             <Label htmlFor="senha" className="font-semibold">Senha</Label>
-                            <Input id="senha" placeholder="bananacomaveia" type="password" />
+                            <Input id="senha" placeholder="bananacomaveia" type="password" onChange={(e) => setSenha(e.target.value)}/>
                         </div>
 
-                        <Button type="submit" className="bg-black text-white mt-2">
+                        <Button className="bg-black text-white mt-2" onClick={handleLogin}>
                             Continuar
                         </Button>
+
+                        <span className="mt-4 text-sm font-semibold text-zinc-500 text-center">{message.message ? message.message : message.error}</span>
                     </div>
                 </form>
             </section>

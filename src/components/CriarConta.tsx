@@ -2,11 +2,21 @@ import { Button } from "../components/ui/button";
 import { Label } from "../components/ui/label";
 import { Input } from "../components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
-import { Calendar } from "../components/ui/calendar";
-import { useState } from "react";
+import {useForm} from 'react-hook-form';
+
+import axios from 'axios'
 
 export const CriarConta = () => {
-  const [vencimento, setVencimento] = useState<Date | undefined>();
+  const { register, handleSubmit, setValue, formState: { errors } } = useForm();
+
+  const onSubmit = async (data: any) => {
+    
+    const result = await axios.post('http://localhost:8080/cadastro', data)
+    console.log(result);
+    
+
+  };
+
 
   return (
     <main className="flex w-screen h-screen items-center justify-between relative p-6">
@@ -43,77 +53,69 @@ export const CriarConta = () => {
 
       {/* Direita - Formulário de Criar Conta */}
       <section className="flex flex-1 justify-center items-center">
-        <form className="flex flex-col gap-4 w-full max-w-sm">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 w-full max-w-sm">
           <h2 className="text-4xl font-semibold mb-2">Criar conta</h2>
 
-          <div className="flex flex-col gap-3">
-
-            {/* Nome */}
-            <div>
-              <Label htmlFor="nome" className="font-semibold">Nome</Label>
-              <Input id="nome" placeholder="Seu nome completo" />
-            </div>
-
-            {/* E-mail */}
-            <div>
-              <Label htmlFor="email" className="font-semibold">E-mail</Label>
-              <Input id="email" placeholder="seuemail@gmail.com" />
-            </div>
-
-            {/* Senha */}
-            <div>
-              <Label htmlFor="senha" className="font-semibold">Senha</Label>
-              <Input id="senha" type="password" placeholder="Sua senha segura" />
-            </div>
-
-            {/* Plano */}
-            <div>
-              <Label htmlFor="plano" className="font-semibold">Plano</Label>
-              <Select>
-                <SelectTrigger id="plano">
-                  <SelectValue placeholder="Selecione o plano" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="EXPERIMENTAL">Experimental</SelectItem>
-                  <SelectItem value="MENSAL">Mensal</SelectItem>
-                  <SelectItem value="BIMESTRAL">Bimestral</SelectItem>
-                  <SelectItem value="TRISMESTRAL">Trimestral</SelectItem>
-                  <SelectItem value="ANUAL">Anual</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            {/* Modalidade */}
-            <div>
-              <Label htmlFor="modalidade" className="font-semibold">Modalidade</Label>
-              <Select>
-                <SelectTrigger id="modalidade">
-                  <SelectValue placeholder="Selecione a modalidade" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="MUSCULACAO">Musculação</SelectItem>
-                  <SelectItem value="NATACAO">Natação</SelectItem>
-                  <SelectItem value="FUNCIONAL">Funcional</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            {/* Vencimento */}
-            <div>
-              <Label htmlFor="vencimento" className="font-semibold">Aniversário</Label>
-              <Input
-                id="vencimento"
-                type="date"
-                value={vencimento?.toISOString().split('T')[0] ?? ''}
-                onChange={(e) => setVencimento(new Date(e.target.value))}
-              />
-            </div>
-
-            <Button type="submit" className="bg-black text-white mt-2">
-              Criar conta
-            </Button>
-
+          <div>
+            <Label htmlFor="nome" className="font-semibold">Nome</Label>
+            <Input id="nome" placeholder="Seu nome completo" {...register("nome", { required: "Nome obrigatório" })} />
+            {errors.nome && <span className="text-red-500">{errors.nome.message}</span>}
           </div>
+
+          <div>
+            <Label htmlFor="email" className="font-semibold">E-mail</Label>
+            <Input id="email" placeholder="seuemail@gmail.com" {...register("email", { required: "E-mail obrigatório" })} />
+            {errors.email && <span className="text-red-500">{errors.email.message}</span>}
+          </div>
+
+          <div>
+            <Label htmlFor="senha" className="font-semibold">Senha</Label>
+            <Input id="senha" type="password" placeholder="Sua senha segura" {...register("senha", { required: "Senha obrigatória" })} />
+            {errors.senha && <span className="text-red-500">{errors.senha.message}</span>}
+          </div>
+        
+          <div>
+            <Label htmlFor="modalidade" className="font-semibold">Modalidade</Label>
+            <Select onValueChange={(value) => setValue("modalidade", value)}>
+              <SelectTrigger id="modalidade">
+                <SelectValue placeholder="Selecione a modalidade" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="MUSCULACAO">Musculção</SelectItem>
+                <SelectItem value="NATACAO">Natação</SelectItem>
+                <SelectItem value="FUNCIONAL">Funcional</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div>
+            <Label htmlFor="plano" className="font-semibold">Plano</Label>
+            <Select onValueChange={(value) => setValue("plano", value)}>
+              <SelectTrigger id="plano">
+                <SelectValue placeholder="Selecione o plano" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="EXPERIMENTAL">Experimental</SelectItem>
+                <SelectItem value="MENSAL">Mensal</SelectItem>
+                <SelectItem value="BIMESTRAL">Bimestral</SelectItem>
+                <SelectItem value="TRIMESTRAL">Trimestral</SelectItem>
+                <SelectItem value="ANUAL">Anual</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div>
+            <Label htmlFor="aniversario" className="font-semibold">Aniversário</Label>
+            <Input
+              id="aniversario"
+              type="date"
+              onChange={(e) => setValue("aniversario", e.target.value)}
+            />
+          </div>
+
+          <Button type="submit" className="bg-black text-white mt-2">
+            Criar conta
+          </Button>
         </form>
       </section>
 
