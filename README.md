@@ -1,54 +1,118 @@
-# React + TypeScript + Vite
+Aqui está um exemplo de README completo e bem estruturado para o seu projeto "BetelGym Website":
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+# BetelGym Website
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![BetelGym](https://via.placeholder.com/600x200.png?text=BetelGym)
 
-## Expanding the ESLint configuration
+**BetelGym** é um projeto Fullstack desenvolvido para criar uma plataforma web moderna e funcional para academias, combinando uma interface elegante com funcionalidades robustas.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Tecnologias Utilizadas
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+Este projeto foi desenvolvido utilizando as seguintes tecnologias:
+
+- **JavaScript** (49.1%): Para funcionalidades dinâmicas no frontend.
+- **TypeScript** (42.7%): Para tipagem estática e maior segurança no código.
+- **CSS** (7.6%): Para estilização da interface.
+- **HTML** (0.6%): Para a estrutura básica do frontend.
+
+## 📋 Funcionalidades
+
+O site da BetelGym possui as seguintes funcionalidades:
+
+- **Página Inicial**: Apresentação da academia com imagens e informações.
+- **Área do Cliente**: Cadastro e gerenciamento de clientes.
+- **Planos e Assinaturas**: Exibição dos planos disponíveis com possibilidade de assinatura.
+- **Contato**: Formulário para clientes entrarem em contato.
+- **Dashboard Administrativo**: Controle de usuários, assinaturas e relatórios.
+
+## 📂 Estrutura do Projeto
+
+Abaixo está a estrutura básica do projeto:
+
+```plaintext
+betelgym-website/
+├── public/           # Arquivos estáticos (imagens, fontes, etc.)
+├── src/
+│   ├── components/   # Componentes reutilizáveis
+│   ├── pages/        # Páginas do site
+│   ├── services/     # Lógica de integração com APIs
+│   ├── styles/       # Estilos globais e específicos
+│   └── utils/        # Funções utilitárias
+├── .github/          # Workflows e templates GitHub
+├── package.json      # Dependências e scripts do projeto
+└── README.md         # Documentação do projeto
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Configuração e Execução
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Siga as instruções abaixo para rodar o projeto localmente:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/brucesantss/betelgym-website.git
+   cd betelgym-website
+   ```
+
+2. **Instale as dependências:**
+   ```bash
+   npm install
+   ```
+
+3. **Execute o projeto em ambiente de desenvolvimento:**
+   ```bash
+   npm run dev
+   ```
+
+4. **Acesse o projeto no navegador:**
+   ```
+   http://localhost:3000
+   ```
+
+5. **Para build de produção:**
+   ```bash
+   npm run build
+   ```
+
+## 🧪 Testes
+
+Para rodar os testes (se aplicável):
+
+```bash
+npm run test
 ```
+
+## 🤝 Contribuições
+
+Contribuições são bem-vindas! Siga os passos abaixo para contribuir:
+
+1. Faça um fork do projeto.
+2. Crie uma branch para sua feature ou correção de bug:
+   ```bash
+   git checkout -b minha-feature
+   ```
+3. Faça commit das suas alterações:
+   ```bash
+   git commit -m "Descrição da minha feature"
+   ```
+4. Envie para o repositório remoto:
+   ```bash
+   git push origin minha-feature
+   ```
+5. Abra um Pull Request.
+
+## 📄 Licença
+
+Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](./LICENSE) para mais detalhes.
+
+## 📞 Contato
+
+Se você tiver alguma dúvida ou sugestão, entre em contato:
+
+- **Autor**: Bruce Santos
+- **Email**: [seu-email@example.com](mailto:euryanjesus@gmail.com)
+- **GitHub**: [brucesantss](https://github.com/brucesantss)
+
+---
+
