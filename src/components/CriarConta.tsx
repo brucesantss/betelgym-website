@@ -2,19 +2,30 @@ import { Button } from "../components/ui/button";
 import { Label } from "../components/ui/label";
 import { Input } from "../components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
-import {useForm} from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 import axios from 'axios'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const CriarConta = () => {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
+  const [message, setMessage] = useState<string | null>(null);
+
+  const navigate = useNavigate();
 
   const onSubmit = async (data: any) => {
-    
-    const result = await axios.post('http://localhost:8080/cadastro', data)
-    console.log(result);
-    
-
+    try {
+      const result = await axios.post('http://localhost:8080/cadastro', data);
+      setMessage(result.data.message);
+      navigate('/home');
+    } catch (err: any) {
+      if (err.response && err.response.data && err.response.data.message) {
+        setMessage(err.response.data.message);
+      } else {
+        setMessage("Erro inesperado ao criar conta.");
+      }
+    }
   };
 
 
@@ -73,7 +84,7 @@ export const CriarConta = () => {
             <Input id="senha" type="password" placeholder="Sua senha segura" {...register("senha", { required: "Senha obrigatória" })} />
             {errors.senha && <span className="text-red-500">{errors.senha.message}</span>}
           </div>
-        
+
           <div>
             <Label htmlFor="modalidade" className="font-semibold">Modalidade</Label>
             <Select onValueChange={(value) => setValue("modalidade", value)}>
@@ -116,6 +127,8 @@ export const CriarConta = () => {
           <Button type="submit" className="bg-black text-white mt-2">
             Criar conta
           </Button>
+
+          <span className="mt-4 text-sm font-semibold text-zinc-500 text-center">{message}</span>
         </form>
       </section>
 

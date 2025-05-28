@@ -3,23 +3,15 @@ import { Label } from "../components/ui/label";
 import { Input } from "../components/ui/input";
 import { FormEvent, useState } from "react";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
 
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
-    const [message, setMessage] = useState<MessageProps>({
-        message: '',
-        statusCode: undefined,
-        error: ''
-    });
-
-    type MessageProps = {
-        message?: string,
-        statusCode?: number | undefined,
-        error?: string
-    }
+    const [message, setMessage] = useState<string | null>(null);
+    const navigate = useNavigate();
 
     const handleLogin = async (e: FormEvent) => {
 
@@ -27,14 +19,12 @@ export const Home = () => {
 
         try {
 
-            const data = await axios.post('http://localhost:8080/login', {email, senha});
-            setMessage({ message: data.data.message, statusCode: data.status, error: ''})
+            const data = await axios.post('http://localhost:8080/login', { email: email, senha: senha });
+            navigate('/dashboard');
 
-            console.log(message);
-                                    
 
         } catch (err: any) {
-            setMessage({ error: err.response.data.message })
+            setMessage(err.response?.data?.message || "Erro ao fazer login.");
         }
 
     }
@@ -62,7 +52,7 @@ export const Home = () => {
                         </Button>
                     </a>
 
-                    
+
                     <Button
                         className="w-40 hover:bg-black hover:text-white hover:font-semibold transition"
                         variant="secondary"
@@ -80,19 +70,19 @@ export const Home = () => {
                     <div className="flex flex-col gap-3">
                         <div>
                             <Label htmlFor="email" className="font-semibold">E-mail</Label>
-                            <Input id="email" placeholder="betelgym@gmail.com" onChange={(e) => setEmail(e.target.value)}/>
+                            <Input id="email" placeholder="betelgym@gmail.com" onChange={(e) => setEmail(e.target.value)} />
                         </div>
 
                         <div>
                             <Label htmlFor="senha" className="font-semibold">Senha</Label>
-                            <Input id="senha" placeholder="bananacomaveia" type="password" onChange={(e) => setSenha(e.target.value)}/>
+                            <Input id="senha" placeholder="bananacomaveia" type="password" onChange={(e) => setSenha(e.target.value)} />
                         </div>
 
                         <Button className="bg-black text-white mt-2" onClick={handleLogin}>
                             Continuar
                         </Button>
 
-                        <span className="mt-4 text-sm font-semibold text-zinc-500 text-center">{message.message ? message.message : message.error}</span>
+                        <span className="mt-4 text-sm font-semibold text-zinc-500 text-center">{message}</span>
                     </div>
                 </form>
             </section>
