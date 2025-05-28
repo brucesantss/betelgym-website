@@ -148,7 +148,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\Admin\\Desktop\\betelgym\\api\\generated\\prisma",
+      "value": "C:\\Users\\Admin\\Desktop\\betelgym-website\\api\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -162,7 +162,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\Admin\\Desktop\\betelgym\\api\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\Admin\\Desktop\\betelgym-website\\api\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -185,8 +185,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nenum Planos {\n  EXPERIMENTAL\n  MENSAL\n  BIMESTRAL\n  TRISMESTRAL\n  ANUAL\n}\n\nenum Modalidade {\n  MUSCULACAO\n  NATACAO\n  FUNCIONAL\n}\n\nmodel Aluno {\n  id    String @id @default(uuid())\n  nome  String\n  email String @unique\n  senha String\n\n  plano      Planos?     @default(EXPERIMENTAL)\n  modalidade Modalidade? @default(MUSCULACAO)\n\n  aniversario DateTime?\n  vencimento  DateTime?\n\n  contaCriada DateTime\n}\n",
-  "inlineSchemaHash": "4ba95cb09edb919b2a560e4cb134ee013abaedf131af1d1a0d22c875eec0c0ff",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"mysql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nenum Planos {\n  EXPERIMENTAL\n  MENSAL\n  BIMESTRAL\n  TRISMESTRAL\n  ANUAL\n}\n\nenum Modalidade {\n  MUSCULACAO\n  NATACAO\n  FUNCIONAL\n}\n\nmodel Aluno {\n  id    String @id @default(uuid())\n  nome  String\n  email String @unique\n  senha String\n\n  plano      Planos?     @default(EXPERIMENTAL)\n  modalidade Modalidade? @default(MUSCULACAO)\n\n  aniversario DateTime?\n  vencimento  DateTime?\n\n  contaCriada DateTime\n}\n",
+  "inlineSchemaHash": "6280a6c2324725c261c619d47782a61161f95473e50bd521b19c5052ed02b379",
   "copyEngine": true
 }
 config.dirname = '/'
